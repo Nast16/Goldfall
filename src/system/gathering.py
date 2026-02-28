@@ -1,14 +1,19 @@
 import random
+from engine.player import add_item
 
-gold = 0
+RESOURCES = {
+    "wood": (1, 5),
+    "iron": (0, 2),
+    "stone": (1, 3)
+}
 
 def gather():
-    global gold
+    print("Kamu pergi mengumpulkan resource...\n")
 
-    reward = random.randint(10, 30)
-    gold += reward
+    for resource, (min_amt, max_amt) in RESOURCES.items():
+        amount = random.randint(min_amt, max_amt)
 
-    print(f"Kamu mengumpulkan resource.")
-    print(f"+{reward} gold")
-    print(f"Total gold: {gold}")
+        if amount > 0:
+            add_item(resource, amount)
+            print(f"+{amount} {resource}")
     
