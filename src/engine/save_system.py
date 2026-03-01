@@ -18,7 +18,14 @@ def load_player():
             if not data:
                 return DEFAULT_PLAYER.copy()
             
-            return json.loads(data)
+            player = json.loads(data)
+
+            for key, value in DEFAULT_PLAYER.items():
+                if key not in player:
+                    player[key] = value
+            
+            return player
+
     
     except json.JSONDecodeError:
         print("Save file corrupt. Creating new save.")
