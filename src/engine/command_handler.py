@@ -2,6 +2,7 @@ from system.gathering import gather
 from engine.player import get_inventory
 from engine.market import show_market
 from system.trade import sell
+from engine.world import world_tick
 
 def handle_command(cmd):
     if cmd == "gather":
@@ -29,3 +30,5 @@ def handle_command(cmd):
 
     else:
         print("Unknown command")
+    
+    world_tick()
